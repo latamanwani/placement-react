@@ -2,9 +2,10 @@ import './App.css';
 
 import Register from './Components/Auth/Register';
 import Login from './Components/Auth/Login';
-import { BrowserRouter as Router, Switch, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from 'react';
 import PlacementList from './Components/Placement/PlacementList';
+import InterviewForm from './Components/Interview/InterviewForm';
 
 function App() {
   const [user, setLoginUser] = useState({})
@@ -19,6 +20,7 @@ function App() {
           />
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/create-interview" element={<InterviewForm />} />
         </Routes>
       </Router>
     </div>
