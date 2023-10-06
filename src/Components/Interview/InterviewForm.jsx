@@ -20,11 +20,10 @@ const InterviewForm = () => {
       date,
     }
 
-    axios.post("http://localhost:8000/login", data)
+    axios.post("http://localhost:8080/interview/create", data)
       .then(res => {
         console.log(res.data.message);
       })
-
     console.log("Interview Form Data", data)
   }
 
