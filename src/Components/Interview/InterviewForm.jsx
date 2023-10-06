@@ -1,10 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from 'axios'
 
 const InterviewForm = () => {
   const [company_name, setCmpName] = useState()
   const [date, setDate] = useState()
+  const [interviews, setInterviewList] = useState([])
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/interview/")
+      .then(res => {
+        console.log(res.data.interviews);
+        setInterviewList(res.data.interviews)
+      })
+  }, [])
 
   const handleCmpNameChange = (e) => {
     setCmpName(e.target.value)
@@ -51,9 +60,20 @@ const InterviewForm = () => {
               </div>
             </form>
           </div>
-          {/* <h1>List of Previous Interviews</h1> */}
-
-          {/* <button></button> */}
+          <h1>List of Previous Interviews</h1>
+          <div className="row mx-0">
+            <div className="col-12">
+              {
+                interviews && interviews.map((interview) => (
+                  <div key={interview._id} className="row mx-0 border">
+                    <div className="col-4 p-2">{interview.company_name}</div>
+                    <div className="col-6 p-2">{interview.date}</div>
+                    <div className="col-2 p-2"><Link to={`/interview/${interview._id}`}><button className="btn btn-sm btn-secondary">View</button></Link></div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
         </section>
       </div>
     </>
