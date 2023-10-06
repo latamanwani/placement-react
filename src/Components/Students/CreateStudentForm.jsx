@@ -2,8 +2,6 @@ import { useState } from "react"
 import axios from 'axios'
 
 const CreateStudentForm = () => {
-  const [] = useState()
-
   const [formData, setFormDate] = useState({
     student_name: "",
     batch: "",
@@ -59,24 +57,21 @@ const CreateStudentForm = () => {
               </div>
               <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">React Score</label>
-                <input onChange={(e) => handleFieldChange(e)} name="reactScore" value={formData.reactScore} type="text" className="form-control" />
+                <input onChange={(e) => handleFieldChange(e)} name="reactScore" value={formData.reactScore} type="number" className="form-control" />
               </div>
               <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">DSA Score</label>
-                <input onChange={(e) => handleFieldChange(e)} name="dsa" value={formData.dsa} type="text" className="form-control" />
+                <input onChange={(e) => handleFieldChange(e)} name="dsa" value={formData.dsa} type="number" className="form-control" />
               </div>
               <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">Web Dev Score</label>
-                <input onChange={(e) => handleFieldChange(e)} name="webd" value={formData.webd} type="text" className="form-control" />
+                <input onChange={(e) => handleFieldChange(e)} name="webd" value={formData.webd} type="number" className="form-control" />
               </div>
               <div className="form-group">
                 <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Create Student</button>
               </div>
             </form>
           </div>
-          {/* <h1>List of Previous Interviews</h1> */}
-
-          {/* <button></button> */}
         </div>
       </div>
     </>
