@@ -7,6 +7,7 @@ import { useState } from 'react';
 import PlacementList from './Components/Placement/PlacementList';
 import InterviewForm from './Components/Interview/InterviewForm';
 import CreateStudentForm from './Components/Students/CreateStudentForm';
+import Home from './Components/Home';
 
 function App() {
   const [user, setLoginUser] = useState({})
@@ -23,6 +24,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/create-interview" element={<InterviewForm />} />
           <Route path="/create-student" element={<CreateStudentForm />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </Router>
     </div>

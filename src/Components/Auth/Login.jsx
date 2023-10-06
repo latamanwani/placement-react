@@ -25,11 +25,11 @@ const Login = ({ setLoginUser }) => {
   }
 
   const login = () => {
-    axios.post("http://localhost:5500/login", user)
+    axios.post("http://localhost:8080/users/create-session", user)
       .then(res => {
         console.log(res.data.message);
         setLoginUser(res.data.user);
-        navigate("/");
+        navigate("/home");
       })
 
   }
