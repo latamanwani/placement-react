@@ -47,7 +47,7 @@ const InterviewForm = () => {
                 <input type="date" name="date" value={date} onChange={(e) => handleDateChange(e)} class="form-control-text" id="exampleFormControltext1" />
               </div>
               <div class="form-group">
-                <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Create Interview</button>
+                <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Create Student</button>
               </div>
             </form>
           </div>
