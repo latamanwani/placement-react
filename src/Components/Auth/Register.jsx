@@ -9,7 +9,7 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
-    reEnterPassword: ''
+   
   })
 
   const handleChange = (e) => {
@@ -22,10 +22,10 @@ const Register = () => {
   }
 
   const register = () => {
-    const { name, email, password, reEnterPassword } = user
-    if (name && email && password && (password === reEnterPassword)) {
-      axios.post("http://localhost:5500/register", user)
-        .then(res => console.log(res))
+    const { name, email, password,} = user
+    if (name && email && password) {
+      axios.post("http://localhost:8080/users/create", user)
+        .then(res => console.log(res.data.message))
     } else {
       alert("invalid input")
     }
@@ -33,12 +33,12 @@ const Register = () => {
 
   return (
     <div className='register'>
-      {console.log("user", user)}
+       {console.log("user", user)} 
       <h1>Register</h1>
       <input type='text' name='name' value={user.name} placeholder='your name' onChange={handleChange}></input>
       <input type='text' name='email' value={user.email} placeholder='your email' onChange={handleChange}></input>
       <input type='password' name='password' value={user.password} placeholder=' your password' onChange={handleChange}></input>
-      <input type='password' name='reEnterPassword' value={user.reEnterPassword} placeholder='re-enter password' onChange={handleChange}></input>
+      {/* <input type='password' name='reEnterPassword' value={user.reEnterPassword} placeholder='re-enter password' onChange={handleChange}></input> */}
       <div className='button' onClick={register}>register</div>
       <div>or</div>
       <div className='button' onClick={() => navigate("/Login")}>log in</div>
