@@ -20,8 +20,11 @@ const Home = () => {
         <div className='col-6'>
           <h1>Students List</h1>
         </div>
-        <div className='col-6'>
+        <div className='col-3'>
           <Link to="/create-student"><button className='btn btn-primary'>Create Student</button></Link>
+        </div>
+        <div className='col-3'>
+          <Link to="/create-interview"><button className='btn btn-info'>Create Interview</button></Link>
         </div>
       </div>
       <div id="student-table">

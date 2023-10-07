@@ -38,29 +38,32 @@ const InterviewForm = () => {
 
   return (
     <>
-      <div>
-        <h1> Interview Main Page </h1>
-        <div>
-          <button><Link to="/">GO to Main</Link> </button>
-        </div>
-
-        <section>
-          <div >
-            <form>
-              <div class="form-group">
-                <label for="exampleFormControlFile1">Company Name</label>
-                <input type="text" name="company_name" value={company_name} onChange={(e) => handleCmpNameChange(e)} class="form-control-text" id="exampleFormControltext1" />
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControltext1">Date</label>
-                <input type="date" name="date" value={date} onChange={(e) => handleDateChange(e)} class="form-control-text" id="exampleFormControltext1" />
-              </div>
-              <div class="form-group">
-                <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Create Student</button>
-              </div>
-            </form>
+      <div className="row mx-0 d-flex justify-content-center">
+        <div className="col-6">
+          <div className="mb-5">
+            <div>
+              <Link to="/home"><button className="btn btn-secondary">GO to Main</button></Link>
+            </div>
+            <h1> Interview Main Page </h1>
           </div>
-          <h1>List of Previous Interviews</h1>
+          <form className="p-2 border rounded">
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Company Name</label>
+              <input type="text" name="company_name" value={company_name} onChange={(e) => handleCmpNameChange(e)} className="form-control" id="exampleFormControltext1" />
+            </div>
+            <div class="form-group mt-4">
+              <label for="exampleFormControltext1">Date</label>
+              <input type="date" name="date" value={date} onChange={(e) => handleDateChange(e)} className="form-control" id="exampleFormControltext1" />
+            </div>
+            <div class="form-group my-5 text-center">
+              <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Create Student</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div className="row mx-0 my-5">
+        <div className="col-12">
+          <h3>List of Previous Interviews</h3>
           <div className="row mx-0">
             <div className="col-12">
               {
@@ -74,7 +77,7 @@ const InterviewForm = () => {
               }
             </div>
           </div>
-        </section>
+        </div>
       </div>
     </>
   )
