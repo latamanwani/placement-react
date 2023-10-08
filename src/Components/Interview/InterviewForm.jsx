@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios'
 
 const InterviewForm = () => {
+  const navigate = useNavigate();
+
   const [company_name, setCmpName] = useState()
   const [date, setDate] = useState()
   const [interviews, setInterviewList] = useState([])
@@ -32,6 +34,7 @@ const InterviewForm = () => {
     axios.post("http://localhost:8080/interview/create", data)
       .then(res => {
         console.log(res.data.message);
+        navigate('/create-interview')
       })
     console.log("Interview Form Data", data)
   }
@@ -56,7 +59,7 @@ const InterviewForm = () => {
               <input type="date" name="date" value={date} onChange={(e) => handleDateChange(e)} className="form-control" id="exampleFormControltext1" />
             </div>
             <div class="form-group my-5 text-center">
-              <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Create Student</button>
+              <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Create Interview</button>
             </div>
           </form>
         </div>

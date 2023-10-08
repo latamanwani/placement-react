@@ -37,6 +37,20 @@ const InterviewPage = () => {
       })
   }
 
+  const handleStudentPlaced = (studentId) => {
+    const data = {
+      studentId: studentId,
+      interviewId: id,
+    }
+    axios.post(`http://localhost:8080/students/placed`, data)
+      .then(res => {
+        if (res.data.success) {
+          console.log(res.data);
+          navigate('/home')
+        }
+      })
+  }
+
   return (
     <>
       <h1>Interview Details: {interview.company_name}</h1>
@@ -51,6 +65,34 @@ const InterviewPage = () => {
             }
           </select>
           <button onClick={(e) => handleAddStudent(e)} className="btn btn-sm btn-success">Add Student</button>
+        </div>
+      </div>
+      <div className="row mx-0 my-5">
+        <div className="col-12">
+          <div id="student-table">
+            <table className='table'>
+              <thead>
+                <tr>
+                  <th scope='col'>Student Name</th>
+                  <th scope='col'>Placement Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  interview.student_detail && interview.student_detail.map((student) => (
+                    <tr key={student._id}>
+                      <td scope='row'>{student.name}</td>
+                      <td scope='row'> {
+                        student.placed ?
+                          <td> Placed in {student.student_placed}</td> :
+                          <td><button onClick={() => handleStudentPlaced(student._id)} className="btn btn-primary">Placed {`${student.name} in ${interview.company_name}`}</button></td>
+                      }</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>

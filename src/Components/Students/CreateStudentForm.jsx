@@ -1,7 +1,10 @@
 import { useState } from "react"
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 const CreateStudentForm = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormDate] = useState({
     student_name: "",
     batch: "",
@@ -30,6 +33,7 @@ const CreateStudentForm = () => {
     axios.post("http://localhost:8080/students/create", data)
       .then(res => {
         console.log(res.data.message);
+        navigate('/home')
       })
     console.log("Interview Form Data", data)
   }
