@@ -44,14 +44,22 @@ const Home = () => {
           <tbody>
             {
               studentList && studentList.map((student) => (
-                <tr>
+                <tr key={student._id}>
                   <td scope='row'>{student.name}</td>
                   <td scope='row'>{student.batch}</td>
                   <td scope='row'>{student.college}</td>
                   <td scope='row'>{student.dsa}</td>
                   <td scope='row'>{student.webd}</td>
                   <td scope='row'>{student.react}</td>
-                  <td scope='row'>{student.companies}</td>
+                  <td scope='row'>
+                    {student?.companies && student?.companies.map((cmp, i) => (
+                      <>
+                        <span key={i} className='border border-info p-1 me-2 rounded'>
+                          {cmp}
+                        </span>
+                      </>
+                    ))}
+                  </td>
                   <td scope='row'> {student.placed ? <td> Placed in {student.student_placed}</td> : <td>Not Placed</td>}</td>
                 </tr>
               ))
