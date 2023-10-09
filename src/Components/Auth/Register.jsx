@@ -26,9 +26,11 @@ const Register = () => {
     if (name && email && password) {
       axios.post("http://localhost:8080/users/create", user)
         .then(res => console.log(res.data.message))
+        navigate("/Login");
     } else {
       alert("invalid input")
     }
+  
   }
 
   return (
